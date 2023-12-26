@@ -16,7 +16,7 @@ screen_height = 1080
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("FNAF-like Game")
 
-# Load your office image
+# Load office image
 office_image = pygame.image.load("oOffice.png")
 
 # Load the camera monitor button images
