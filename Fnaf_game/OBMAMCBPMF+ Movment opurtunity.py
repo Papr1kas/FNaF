@@ -4,15 +4,14 @@ import random
 import time
 
 # Set the new working directory
-new_directory = "Fnaf_resources"
+new_directory = "Fnaf_game/Fnaf_resources"
 os.chdir(new_directory)
 pygame.init()
 
 # Define screen dimensions
 screen_width = 1920
 screen_height = 1080
-#screen_width = 1300
-#screen_height = 720
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("FNAF-like Game")
 
@@ -50,17 +49,13 @@ camera_map_rect.center = (screen_width // 1.225, screen_height // 1.355)
 camera_button_states = [False] * len(camera_buttons_data)
 
 # Load the monitor opening and closing frames
-opening_frames = [
-    pygame.image.load(f"Frame.O.{i}.png") for i in range(1, 8)
-]
-closing_frames = [
-    pygame.image.load(f"Frame.C.{i}.png") for i in range(1, 7)
-]
+opening_frames = [pygame.image.load(f"Frame.O.{i}.png") for i in range(1, 8)]
+closing_frames = [pygame.image.load(f"Frame.C.{i}.png") for i in range(1, 7)]
 
 # Load the monitor image
 monitor_image = pygame.image.load("CameraMonitor.png")
 monitor_rect = monitor_image.get_rect()
-# Adjust the position of the monitor
+# Position of the monitor
 monitor_rect.center = (screen_width // 2, screen_height // 2)
 
 # Initialize the monitor state
@@ -71,7 +66,7 @@ opening_animation_complete = False
 closing_animation_complete = True
 current_frame = 0
 
-# Create a list to store camera feed images
+# List to store camera feed images
 camera_feed_images = [
     pygame.image.load("Camera1Feed.png"),
     pygame.image.load("Camera2Feed.png"),
@@ -256,17 +251,17 @@ while running:
             screen.blit(monitor_image, monitor_rect)
             screen.blit(camera_map_image, camera_map_rect)
             screen.blit(monitor_button_hover_image, monitor_button_rect)
-                
+
             # Blit the camera buttons
             for i, camera_button_data in enumerate(camera_buttons_data):
                 if camera_button_states[i]:
                     screen.blit(camera_button_data["pressed"], camera_button_data["rect"])
                 else:
                     screen.blit(camera_button_data["normal"], camera_button_data["rect"])
-            
+
             # Display the active camera feed
             if active_camera is not None and 0 <= active_camera < len(camera_feed_images):
-                screen.blit(camera_feed_images[active_camera], (monitor_rect.x, monitor_rect.y))   
+                screen.blit(camera_feed_images[active_camera], (monitor_rect.x, monitor_rect.y))
     else:
         if current_frame < len(closing_frames):
             screen.blit(closing_frames[current_frame], (0, 0))
@@ -275,13 +270,13 @@ while running:
         # Handle mouse movement to control camera view
         mouse_x, mouse_y = pygame.mouse.get_pos()
         camera_x += (mouse_x - screen_width // 2) / 10  # Adjust the camera speed as needed
-        camera_y += (mouse_y - screen_height // 2) / 10      
-          
+        camera_y += (mouse_y - screen_height // 2) / 10
+
     # Blit the monitor button
     if prev_hovering_monitor_button:
         screen.blit(monitor_button_hover_image, monitor_button_rect)
     else:
-        screen.blit(monitor_button_normal_image, monitor_button_rect) 
+        screen.blit(monitor_button_normal_image, monitor_button_rect)
 
     # Update the screen
     pygame.display.flip()
