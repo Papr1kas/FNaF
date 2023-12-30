@@ -16,7 +16,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("FNAF-like Game")
 
 # Load office image
-office_image = pygame.image.load("oOffice.png")
+office_image = pygame.image.load("oOffice.png").convert_alpha()
 
 # Load the camera monitor button images
 monitor_button_normal_image = pygame.image.load("MonitorButton.png").convert_alpha()
@@ -42,7 +42,7 @@ camera_buttons_data = [
 ]
 
 # Load the camera map image and define its position
-camera_map_image = pygame.image.load("Cam_Map.png")
+camera_map_image = pygame.image.load("Cam_Map.png").convert_alpha()
 camera_map_rect = camera_map_image.get_rect()
 camera_map_rect.center = (screen_width // 1.225, screen_height // 1.355)
 # Set initial button states (all buttons are not pressed)
@@ -53,7 +53,7 @@ opening_frames = [pygame.image.load(f"Frame.O.{i}.png") for i in range(1, 8)]
 closing_frames = [pygame.image.load(f"Frame.C.{i}.png") for i in range(1, 7)]
 
 # Load the monitor image
-monitor_image = pygame.image.load("CameraMonitor.png")
+monitor_image = pygame.image.load("CameraMonitor.png").convert_alpha()
 monitor_rect = monitor_image.get_rect()
 # Position of the monitor
 monitor_rect.center = (screen_width // 2, screen_height // 2)
@@ -68,17 +68,17 @@ current_frame = 0
 
 # List to store camera feed images
 camera_feed_images = [
-    pygame.image.load("Camera1Feed.png"),
-    pygame.image.load("Camera2Feed.png"),
-    pygame.image.load("Camera3Feed.png"),
-    pygame.image.load("Camera4Feed.png"),
-    pygame.image.load("Camera5Feed.png"),
-    pygame.image.load("Camera6Feed.png"),
-    pygame.image.load("Camera7Feed.png"),
-    pygame.image.load("Camera8Feed.png"),
-    pygame.image.load("Camera9Feed.png"),
-    pygame.image.load("Camera10Feed.png"),
-    pygame.image.load("Camera11Feed.png"),
+    pygame.image.load("Camera1Feed.png").convert_alpha(),
+    pygame.image.load("Camera2Feed.png").convert_alpha(),
+    pygame.image.load("Camera3Feed.png").convert_alpha(),
+    pygame.image.load("Camera4Feed.png").convert_alpha(),
+    pygame.image.load("Camera5Feed.png").convert_alpha(),
+    pygame.image.load("Camera6Feed.png").convert_alpha(),
+    pygame.image.load("Camera7Feed.png").convert_alpha(),
+    pygame.image.load("Camera8Feed.png").convert_alpha(),
+    pygame.image.load("Camera9Feed.png").convert_alpha(),
+    pygame.image.load("Camera10Feed.png").convert_alpha(),
+    pygame.image.load("Camera11Feed.png").convert_alpha(),
 ]
 
 # Initialize the active camera (None for no active camera)
