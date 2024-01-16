@@ -283,7 +283,7 @@ while running:
 
     # Limit the frame rate
     clock = pygame.time.Clock()
-    clock.tick(200)
+    clock.tick(60)
 
 # Clean up Pygame
 pygame.quit()
